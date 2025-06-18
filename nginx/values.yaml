@@ -1,0 +1,25 @@
+replicaCount: 1
+image:
+  repository: nginx
+  tag: stable
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  host: nginx.kassaev.local
+  className: traefik
+  path: /
+  pathType: Prefix
+
+html:
+  content: |
+    <html>
+    <head><title>Hello from GitOps + Helm!</title></head>
+    <body>
+      <h1>NGINX deployed via ArgoCD and Helm</h1>
+    </body>
+    </html>
